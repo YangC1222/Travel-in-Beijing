@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#a53236">
+  <meta name="description" content="2026 北京国庆慢游地图：12 个景点、10 月 1—6 日日程，保留圆明园、天坛、清华大学已定安排。">
+  <title>京城慢游 · 北京国庆旅行地图</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23a53236'/%3E%3Ctext x='20' y='29' font-size='27' fill='white' text-anchor='middle'%3E京%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="style.css">
+  <script defer src="vendor/leaflet.js"></script><script defer src="data.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#itinerary">跳到日程安排</a>
+  <header class="masthead">
+    <a class="brand" href="#all" aria-label="京城慢游首页"><span class="seal">京</span><span>京城慢游<small>BEIJING · TRAVEL NOTE</small></span></a>
+    <div class="trip-meta"><span>2026.10.01 — 10.06</span><span class="pill">国庆 · 休闲六日</span></div>
+    <a class="repo-link" href="https://github.com/YangC1222/Travel-in-Beijing" target="_blank" rel="noopener">GitHub ↗</a>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">一张地图，慢慢走过北京</p><h1 id="page-title">把时间，留给风景。</h1></div><p class="intro-note">12 个想去的地方，按片区慢慢逛。<br>圆明园、天坛、清华的已定时段都保留。</p></section>
+    <nav id="day-nav" class="day-nav" aria-label="选择旅行日期"></nav>
+    <div class="workspace">
+      <section class="map-section" aria-label="北京景点地图">
+        <div class="map-top"><div><span class="eyebrow">BEIJING MAP</span><h2 id="map-title">十二处风景，一眼看清</h2></div><button id="fit-map" class="quiet-button" type="button">◎ 回到全景</button></div>
+        <div class="map-wrap"><div id="map" role="region" aria-label="可拖动和缩放的北京旅行地图"></div><div class="north" aria-hidden="true">N<span>↑</span></div><div id="map-error" role="status" hidden>底图暂时没有加载，景点标记和日程仍可使用。可点击景点，前往高德查看位置。<button id="retry-map" type="button">重试底图</button></div><div class="map-caption">点击日期放大当天区域 · 点击标记查看景点</div></div>
+        <div class="map-foot"><span><i class="line-sample"></i>虚线仅示意游览顺序，不是实际导航路线</span><span>北 ↑ · 位置为景区代表点</span></div>
+        <div id="place-index" class="place-index" aria-label="全部景点索引"></div>
+      </section>
+      <aside id="itinerary" class="itinerary" aria-labelledby="itinerary-title" tabindex="-1"><div id="schedule-content"></div></aside>
+    </div>
+    <section class="trip-notes" aria-label="出行前的小安排">
+      <div><span class="note-number">01</span><h3>让早晨轻松一点</h3><p>地坛可移到 10 月 4 日傍晚，10 月 2 日上午就能睡到自然醒。调整会同步到地图和日程。</p><label for="ditan-day">地坛安排在</label><select id="ditan-day"><option value="2">10 月 2 日上午</option><option value="4">10 月 4 日傍晚</option></select></div>
+      <div><span class="note-number">02</span><h3>给返程留足时间</h3><p>10 月 6 日按有大半天游览时间安排。若中午离京，北海、景山需提前调整；取行李、赴车站或机场的时间另留。</p><details><summary>如果 10 月 5 日就返程</summary><p>休闲优先：北海、景山择一，放在 10 月 3 日下午，其余留待下次。若坚持全部去，10 月 3 日会变成清华＋北海＋景山的紧凑一天，不再是本方案的休闲节奏。</p></details></div>
+      <div><span class="note-number">03</span><h3>先确认，再出门</h3><p>清华按入校资格或预约结果参观；天坛下午尽量 14:00 入园。这里的时间是建议，不代表已替你订票。</p><div class="source-links"><a href="https://www.tsinghua.edu.cn/zjqh/syxx/xycg.htm" target="_blank" rel="noopener">清华参观说明 ↗</a><a href="https://www.tiantanpark.cn/index.html" target="_blank" rel="noopener">天坛官方信息 ↗</a></div></div>
+    </section>
+  </main>
+  <footer><span>京城慢游 · 2026 国庆旅行计划</span><span>日程参考更新于 2026.09.28 · 开放、预约与管制以当日官方信息为准</span><a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">反馈底图问题 ↗</a></footer>
+  <noscript><div class="noscript">请启用 JavaScript 查看交互地图。完整文字日程也可在 <a href="https://github.com/YangC1222/Travel-in-Beijing">GitHub 仓库</a>中阅读。</div></noscript>
+</body>
+</html>
