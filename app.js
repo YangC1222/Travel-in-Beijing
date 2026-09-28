@@ -8,6 +8,7 @@
   const index = document.querySelector('#place-index');
   const dayOf = p => p.id === 'ditan' ? ditanDay : p.day;
   const colorOf = p => days[dayOf(p) - 1].color;
+  const areaOf = day => ditanDay===4 && day.id===2 ? '天坛 · 城南' : ditanDay===4 && day.id===4 ? '雍和宫 · 国子监 · 地坛' : day.area;
   const mapLink = p => `https://uri.amap.com/search?keyword=${encodeURIComponent(p.entry)}&city=110000&view=map`;
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function getItems(day) {
@@ -35,7 +36,7 @@
       const p = byId[item.place];
       return `<div class="stop"><time>${item.time}${item.optional?' · 可调整':''}</time><article class="stop-card"><h3>${p.name}${p.fixed?'<span class="fixed">已定时段</span>':''}</h3><p>${p.note}</p><div class="stop-actions"><button class="text-button" data-place="${p.id}">地图定位</button><a href="${mapLink(p)}" target="_blank" rel="noopener">高德找入口 ↗</a></div></article></div>`;
     }).join('');
-    content.innerHTML = `<div style="--day:${day.color}"><div class="day-detail-top"><p class="eyebrow">DAY 0${day.id} / ${day.date} ${day.week}</p><h2 id="itinerary-title">${day.title}</h2><p>${day.id===2&&ditanDay===4?'上午留白，下午完整游览天坛。':day.summary}</p><div class="detail-pills"><span>${day.area}</span><span>${routePlaces(day).length} 个景点</span><span>${day.pace}</span></div></div><div class="timeline">${steps}</div><section class="travel-tip"><h3>怎么走更顺</h3><p>${day.id===2&&ditanDay===4?'上午从住处出发前往天坛，具体交通按住宿位置选择。建议约 14:00 到天坛东门。':day.transport}</p></section><section class="travel-tip"><h3>出发前记住这一点</h3><p>${day.tips}</p></section><div class="prev-next"><button data-day="${day.id===1?0:day.id-1}">${day.id===1?'← 全程总览':'← 前一天'}</button><button data-day="${day.id===6?0:day.id+1}">${day.id===6?'回到总览 ↗':'后一天 →'}</button></div></div>`;
+    content.innerHTML = `<div style="--day:${day.color}"><div class="day-detail-top"><p class="eyebrow">DAY 0${day.id} / ${day.date} ${day.week}</p><h2 id="itinerary-title">${day.title}</h2><p>${day.id===2&&ditanDay===4?'上午留白，下午完整游览天坛。':day.summary}</p><div class="detail-pills"><span>${areaOf(day)}</span><span>${routePlaces(day).length} 个景点</span><span>${day.pace}</span></div></div><div class="timeline">${steps}</div><section class="travel-tip"><h3>怎么走更顺</h3><p>${day.id===2&&ditanDay===4?'上午从住处出发前往天坛，具体交通按住宿位置选择。建议约 14:00 到天坛东门。':day.transport}</p></section><section class="travel-tip"><h3>出发前记住这一点</h3><p>${day.tips}</p></section><div class="prev-next"><button data-day="${day.id===1?0:day.id-1}">${day.id===1?'← 全程总览':'← 前一天'}</button><button data-day="${day.id===6?0:day.id+1}">${day.id===6?'回到总览 ↗':'后一天 →'}</button></div></div>`;
   }
   function popup(p) {
     return `<div class="popup-meta">${esc(p.area)} · ${days[dayOf(p)-1].date}</div><h3>${esc(p.name)}</h3>${p.fixed?`<span class="fixed">${esc(p.fixed)}</span>`:''}<p>${esc(p.note)}</p><div class="popup-meta">建议停留 ${esc(p.duration)} · 标记非精确入口</div><div class="popup-links"><button data-day="${dayOf(p)}">查看当日日程</button><a href="${mapLink(p)}" target="_blank" rel="noopener">高德找入口 ↗</a></div>${p.source?`<div class="popup-links"><a href="${p.source}" target="_blank" rel="noopener">参观信息 ↗</a></div>`:''}`;
@@ -77,6 +78,7 @@
     const labelWidth=size.x<420?99:112;
     const addLabel=(p,x,y)=>{
       x=Math.max(8,Math.min(size.x-labelWidth-8,x));y=Math.max(8,Math.min(size.y-60,y));
+      if(y<72&&x<48)x=48;
       const target=map.containerPointToLatLng([x+labelWidth/2,y+13]);
       L.polyline([[p.lat,p.lng],target],{color:colorOf(p),weight:1,opacity:.7,interactive:false}).addTo(callouts);
       L.marker(map.containerPointToLatLng([x,y]),{icon:L.divIcon({className:'overview-label',html:`<button data-place="${p.id}" style="--pin:${colorOf(p)}"><b>${p.n}</b>${p.name}</button>`,iconSize:[labelWidth,26],iconAnchor:[0,0]}),interactive:false,keyboard:false,zIndexOffset:400}).addTo(callouts);
@@ -94,7 +96,7 @@
   function showDay(day, updateHash=true) {
     selected=Number.isInteger(day)&&day>=0&&day<=6?day:0;
     renderNav();renderIndex();selected?detail(days[selected-1]):overview();
-    document.querySelector('#map-title').textContent=selected?`${days[selected-1].date} · ${days[selected-1].area}`:'十二处风景，一眼看清';
+    document.querySelector('#map-title').textContent=selected?`${days[selected-1].date} · ${areaOf(days[selected-1])}`:'十二处风景，一眼看清';
     updateMap();
     if(updateHash)history.replaceState(null,'',selected?`#day-${selected}`:'#all');
     nav.querySelector('[aria-pressed=true]')?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
