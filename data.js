@@ -1,7 +1,7 @@
 /* Coordinates are WGS84 representative points, not promised entrances. */
 window.TRIP = {
   places: [
-    {id:'yuanmingyuan',n:'01',name:'圆明园',lat:40.00722,lng:116.29250,day:1,area:'海淀 · 西北',duration:'2–3 小时',fixed:'10/1 下午已定',note:'抵京后先入住或寄存行李。园区很大，选一片慢慢逛；想看大水法，优先规划西洋楼遗址片区。',entry:'圆明园遗址公园东门',source:'https://www.yuanmingyuanpark.cn/'},
+    {id:'yuanmingyuan',n:'01',name:'圆明园',lat:40.00722,lng:116.29250,day:1,area:'海淀 · 西北',duration:'2–3 小时',fixed:'10/1 下午已定',note:'抵京后先入住或寄存行李。园区很大，选一片慢慢逛；想看大水法，优先规划西洋楼遗址片区。',entry:'圆明园遗址公园南门',source:'https://www.yuanmingyuanpark.cn/'},
     {id:'ditan',n:'02',name:'地坛公园',lat:39.95142,lng:116.40970,day:2,area:'北二环 · 安定门外',duration:'1–1.5 小时',note:'看古树、散步，不用走遍全园。想睡懒觉可挪到 10/4 傍晚；国庆不保证银杏已金黄。',entry:'地坛公园南门',source:'https://gygl.beijing.gov.cn/mlgy/mlgy_lsmy/201911/t20191129_734014.html'},
     {id:'tiantan',n:'03',name:'天坛',lat:39.88220,lng:116.40660,day:2,area:'东城 · 城南',duration:'约 3 小时',fixed:'10/2 下午已定',note:'建议 14:00 左右入园，选含核心景点的票种。东门 → 祈年殿 → 丹陛桥 → 皇穹宇、回音壁 → 圜丘 → 南门。',entry:'天坛公园东门',source:'https://www.tiantanpark.cn/index.html'},
     {id:'tsinghua',n:'04',name:'清华大学',lat:40.00000,lng:116.32667,day:3,area:'海淀 · 西北',duration:'约 3 小时',fixed:'10/3 上午已定',note:'按入校安排和现场开放范围游览。二校门、清华学堂、大礼堂、水木清华、近春园挑重点；下午留白休息。',entry:'清华大学',source:'https://www.tsinghua.edu.cn/zjqh/syxx/xycg.htm'},
