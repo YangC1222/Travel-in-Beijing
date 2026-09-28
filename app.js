@@ -2,7 +2,7 @@
   'use strict';
   const {places, days} = window.TRIP;
   const byId = Object.fromEntries(places.map(p => [p.id, p]));
-  let selected = 0, ditanDay = 2, map, pins = {}, layers, zones, callouts;
+  let selected = 0, ditanDay = 4, map, pins = {}, layers, zones, callouts;
   const nav = document.querySelector('#day-nav');
   const content = document.querySelector('#schedule-content');
   const index = document.querySelector('#place-index');
@@ -16,19 +16,19 @@
     if (day.id === 2 && ditanDay === 4) items.unshift({time:'上午',title:'睡到自然醒',text:'地坛已移到 10/4 傍晚。慢慢吃早饭，准备下午去天坛。',rest:true});
     if (day.id === 4 && ditanDay === 4) {
       items.find(item => item.place === 'wudaoying').time = '14:30–15:30';
-      items.push({time:'16:00–17:00',place:'ditan',optional:true});
+      items.push({time:'16:00–17:00 · 傍晚',place:'ditan'});
     }
     return items;
   }
   function routePlaces(day) { return getItems(day).filter(i => i.place).map(i => byId[i.place]); }
   function renderNav() {
-    nav.innerHTML = `<button class="day-tab" style="--day:#293e3b" data-day="0" aria-pressed="${selected===0}"><strong>全程总览</strong><small>12 景点 · 6 天</small></button>` + days.map(d => `<button class="day-tab" style="--day:${d.color}" data-day="${d.id}" aria-pressed="${selected===d.id}"><strong><span class="day-dot"></span>${d.date}</strong><small>${d.short}</small></button>`).join('');
+    nav.innerHTML = `<button class="day-tab" style="--day:#293e3b" data-day="0" aria-pressed="${selected===0}"><strong>全程总览</strong><small>12 景点 · 6 天</small></button>` + days.map(d => `<button class="day-tab" style="--day:${d.color}" data-day="${d.id}" aria-pressed="${selected===d.id}"><strong><span class="day-dot"></span>${d.date}</strong><small>${d.id===2&&ditanDay===4?'午后天坛':d.short}</small></button>`).join('');
   }
   function renderIndex() {
     index.innerHTML = places.map(p => `<button class="place-link ${selected && selected!==dayOf(p)?'dim':''}" style="--day:${colorOf(p)}" data-place="${p.id}" aria-label="在地图上查看${p.name}"><span class="num">${p.n}</span>${p.name}</button>`).join('');
   }
   function overview() {
-    content.innerHTML = `<div class="panel-heading"><div><p class="eyebrow">YOUR ITINERARY</p><h2 id="itinerary-title">六天，慢慢逛北京</h2><p>先选一天，地图和日程一起展开。</p></div><span class="count">3 个已定时段</span></div><p class="overview-note">10/1 中午抵京 · 10/3 下午留白<br>每天留出午饭和休息，景点之间不赶场。</p>` + days.map(d => `<button class="day-card" style="--day:${d.color}" data-day="${d.id}"><div class="day-card-top"><span class="date-badge">${d.date}</span><strong>${d.short}</strong>${d.id<=3?'<span class="fixed">有已定安排</span>':''}<span class="arrow">↗</span></div><div class="card-stops">${routePlaces(d).map(p=>`<span>${p.name}${p.id==='ditan'?'（机动）':''}</span>`).join('')}</div><p>${d.id===2&&ditanDay===4?'上午睡到自然醒，下午约 3 小时游览。':d.summary}</p></button>`).join('');
+    content.innerHTML = `<div class="panel-heading"><div><p class="eyebrow">YOUR ITINERARY</p><h2 id="itinerary-title">六天，慢慢逛北京</h2><p>先选一天，地图和日程一起展开。</p></div><span class="count">3 个已定时段</span></div><p class="overview-note">10/1 中午抵京 · 10/3 下午留白<br>每天留出午饭和休息，景点之间不赶场。</p>` + days.map(d => `<button class="day-card" style="--day:${d.color}" data-day="${d.id}"><div class="day-card-top"><span class="date-badge">${d.date}</span><strong>${d.id===2&&ditanDay===4?'午后天坛':d.short}</strong>${d.id<=3?'<span class="fixed">有已定安排</span>':''}<span class="arrow">↗</span></div><div class="card-stops">${routePlaces(d).map(p=>`<span>${p.name}${p.id==='ditan'?'（傍晚）':''}</span>`).join('')}</div><p>${d.id===2&&ditanDay===4?'上午睡到自然醒，下午约 3 小时游览。':d.summary}</p></button>`).join('');
   }
   function detail(day) {
     const steps = getItems(day).map(item => {
@@ -37,10 +37,10 @@
       const transit = p.id==='ditan' && ditanDay===4 ? window.TRIP.transit.ditanAfterWudaoying : p.id==='tiantan' && ditanDay===4 ? window.TRIP.transit.tiantanOnly : window.TRIP.transit.incoming[p.id];
       return `${transitCard(transit)}<div class="stop"><time>${item.time}${item.optional?' · 可调整':''}</time><article class="stop-card"><h3>${p.name}${p.fixed?'<span class="fixed">已定时段</span>':''}</h3><p>${p.note}</p><div class="stop-actions"><button class="text-button" data-place="${p.id}">地图定位</button><a href="${mapLink(p)}" target="_blank" rel="noopener">高德找入口 ↗</a></div></article></div>`;
     }).join('');
-    content.innerHTML = `<div style="--day:${day.color}"><div class="day-detail-top"><p class="eyebrow">DAY 0${day.id} / ${day.date} ${day.week}</p><h2 id="itinerary-title">${day.title}</h2><p>${day.id===2&&ditanDay===4?'上午留白，下午完整游览天坛。':day.summary}</p><div class="detail-pills"><span>${areaOf(day)}</span><span>${routePlaces(day).length} 个景点</span><span>${day.pace}</span></div></div><p class="transit-intro">公共交通已按当天顺序标注。住宿位置未定，首段从推荐地铁站起算；步行与接驳耗时为规划估算，国庆限流另留余量。</p><div class="timeline">${steps}${transitCard(day.id===4 && ditanDay===4 ? window.TRIP.transit.ditanDeparture : window.TRIP.transit.departures[day.id])}</div><section class="travel-tip"><h3>怎么走更顺</h3><p>${day.id===2&&ditanDay===4?'上午从住处出发前往天坛，具体交通按住宿位置选择。建议约 14:00 到天坛东门。':day.transport}</p></section><section class="travel-tip"><h3>出发前记住这一点</h3><p>${day.tips}</p></section><details class="transit-sources"><summary>交通信息来源与实时查询</summary><p>线路核对：2026.09.28。乘车方向、出口开放和临时绕行以当天运营信息为准。路线未包含未知的酒店往返。</p>${window.TRIP.transit.sources.map(source=>`<a href="${source.url}" target="_blank" rel="noopener">${source.title} ↗</a>`).join('')}</details><div class="prev-next"><button data-day="${day.id===1?0:day.id-1}">${day.id===1?'← 全程总览':'← 前一天'}</button><button data-day="${day.id===6?0:day.id+1}">${day.id===6?'回到总览 ↗':'后一天 →'}</button></div></div>`;
+    content.innerHTML = `<div style="--day:${day.color}"><div class="day-detail-top"><p class="eyebrow">DAY 0${day.id} / ${day.date} ${day.week}</p><h2 id="itinerary-title">${day.id===2&&ditanDay===4?'睡个懒觉，午后游天坛':day.title}</h2><p>${day.id===2&&ditanDay===4?'上午留白，下午完整游览天坛。':day.summary}</p><div class="detail-pills"><span>${areaOf(day)}</span><span>${routePlaces(day).length} 个景点</span><span>${day.id===2&&ditanDay===4?'上午留白 · 下午已定':day.pace}</span></div></div><p class="transit-intro">公共交通已按当天顺序标注。住宿位置未定，首段从推荐地铁站起算；步行与接驳耗时为规划估算，国庆限流另留余量。</p><div class="timeline">${steps}${transitCard(day.id===4 && ditanDay===4 ? window.TRIP.transit.ditanDeparture : window.TRIP.transit.departures[day.id])}</div><section class="travel-tip"><h3>怎么走更顺</h3><p>${day.id===2&&ditanDay===4?'上午从住处出发前往天坛，具体交通按住宿位置选择。建议约 14:00 到天坛东门。':day.transport}</p></section><section class="travel-tip"><h3>出发前记住这一点</h3><p>${day.tips}</p></section><details class="transit-sources"><summary>交通信息来源与实时查询</summary><p>线路核对：2026.09.28。乘车方向、出口开放和临时绕行以当天运营信息为准。路线未包含未知的酒店往返。</p>${window.TRIP.transit.sources.map(source=>`<a href="${source.url}" target="_blank" rel="noopener">${source.title} ↗</a>`).join('')}</details><div class="prev-next"><button data-day="${day.id===1?0:day.id-1}">${day.id===1?'← 全程总览':'← 前一天'}</button><button data-day="${day.id===6?0:day.id+1}">${day.id===6?'回到总览 ↗':'后一天 →'}</button></div></div>`;
   }
   function transitCard(leg) {
-    return `<section class="transit-leg" aria-label="${esc(leg.label)}交通路线"><div class="transit-heading"><span class="transit-icon" aria-hidden="true">↳</span><h3>${esc(leg.label)}</h3></div><div class="transit-modes">${leg.modes.map(mode=>`<span>${esc(mode)}</span>`).join('')}</div><p class="transit-route">${esc(leg.route)}</p><p class="transit-estimate">${esc(leg.estimate)}</p><details><summary>查看乘车与步行提醒</summary><p>${esc(leg.note)}</p></details></section>`;
+    return `<section class="transit-leg" aria-label="${esc(leg.label)}交通路线"><div class="transit-heading"><span class="transit-icon" aria-hidden="true">↳</span><h3>${esc(leg.label)}</h3></div><div class="transit-modes">${leg.modes.map(mode=>`<span>${esc(mode)}</span>`).join('')}</div><p class="transit-route">${esc(leg.route)}</p>${leg.exit?`<p class="exit-advice"><strong>推荐出口</strong> ${esc(leg.exit)}</p>`:''}<p class="transit-estimate">${esc(leg.estimate)}</p><details><summary>查看乘车与步行提醒</summary><p>${esc(leg.note)}</p></details></section>`;
   }
   function popup(p) {
     return `<div class="popup-meta">${esc(p.area)} · ${days[dayOf(p)-1].date}</div><h3>${esc(p.name)}</h3>${p.fixed?`<span class="fixed">${esc(p.fixed)}</span>`:''}<p>${esc(p.note)}</p><div class="popup-meta">建议停留 ${esc(p.duration)} · 标记非精确入口</div><div class="popup-links"><button data-day="${dayOf(p)}">查看当日日程</button><a href="${mapLink(p)}" target="_blank" rel="noopener">高德找入口 ↗</a></div>${p.source?`<div class="popup-links"><a href="${p.source}" target="_blank" rel="noopener">参观信息 ↗</a></div>`:''}`;

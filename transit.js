@@ -3,18 +3,18 @@ window.TRIP.transit = {
   incoming: {
     yuanmingyuan: {label:'抵达圆明园',modes:['地铁 4 号线','步行'],route:'圆明园站 B 口 → 步行约 5–10 分钟 → 圆明园南门',note:'这是乘地铁最省换乘的入口方案，南门到西洋楼遗址仍需较长园内步行。若更重视大水法、希望从东门入园，请另查住处至东门的实时公交。若从北京南站直接出发，可乘 4 号线安河桥北方向直达圆明园站；入住绕行不计在内。',estimate:'步行约 5–10 分钟（出站至南门）'},
     ditan: {label:'抵达地坛',modes:['地铁 2 / 5 号线','步行'],route:'雍和宫站 → 按地坛方向过街 → 地坛南门',note:'出站至南门按约 10–15 分钟预留。若从安定门站（2 号线）抵达，也可由地坛西门进；为衔接下午天坛，建议从南门离园。',estimate:'步行约 10–15 分钟'},
-    tiantan: {label:'地坛 → 天坛',modes:['地铁 5 号线','无需换乘'],route:'地坛南门 → 雍和宫站 → 5 号线往宋家庄方向，乘 8 站 → 天坛东门站 → 天坛东门',note:'乘车约 20–25 分钟；加上两端步行、安检与候车，门到门约留 50–70 分钟。午饭与休息另留，建议约 14:00 入园。',estimate:'门到门预留 50–70 分钟'},
-    tsinghua: {label:'抵达清华 · 先确认入校门',modes:['地铁 4 号线','按校门选择'],route:'西门入校：圆明园站（4 号线）→ 步行约 330 米 → 清华大学西门',note:'若获准从东南门入校，可选 13 号线五道口站，步行约 1 公里；清华东路西口站（15 号线）适合部分东侧、北侧校门，需按指定校门再导航。不要因交通方便改走未获准的校门。',estimate:'西门接驳约 5–10 分钟；东南门约 15–20 分钟'},
-    yonghe: {label:'抵达雍和宫',modes:['地铁 2 / 5 号线','步行'],route:'雍和宫站 → 沿雍和宫大街向南 → 雍和宫游客入口',note:'地铁站与寺院入口不是同一位置，出站后仍需步行。按现场“雍和宫”导向选择开放出口，预留安检、排队时间。',estimate:'出站后步行约 10–15 分钟'},
+    tiantan: {label:'地坛 → 天坛',modes:['地铁 5 号线','无需换乘'],route:'地坛南门 → 雍和宫站 → 5 号线往宋家庄方向，乘 8 站 → 天坛东门站 A2 口 → 天坛东门',note:'乘车约 20–25 分钟；加上两端步行、安检与候车，门到门约留 50–70 分钟。午饭与休息另留，建议约 14:00 入园。',estimate:'门到门预留 50–70 分钟'},
+    tsinghua: {label:'抵达清华 · 先确认入校门',modes:['地铁 4 号线','按校门选择'],route:'西门入校：圆明园站 B 口（4 号线）→ 步行约 330 米 → 清华大学西门',note:'若获准从东南门入校，可选 13 号线五道口站，步行约 1 公里；清华东路西口站（15 号线）适合部分东侧、北侧校门，需按指定校门再导航。不要因交通方便改走未获准的校门。',estimate:'西门接驳约 5–10 分钟；东南门约 15–20 分钟'},
+    yonghe: {label:'抵达雍和宫',modes:['地铁 2 / 5 号线','步行'],route:'雍和宫站 F 口 → 沿雍和宫大街向南 → 雍和宫游客入口',note:'地铁站与寺院入口不是同一位置，出站后仍需步行。按现场“雍和宫”导向选择开放出口，预留安检、排队时间。',estimate:'出站后步行约 10–15 分钟'},
     guozijian: {label:'雍和宫 → 国子监',modes:['步行推荐'],route:'雍和宫游客出口 → 国子监街 → 孔庙和国子监博物馆入口',note:'两处相邻，步行约 10–15 分钟。午饭可安排在这一段附近，无需为短距离再进出地铁站。',estimate:'步行约 10–15 分钟（不含午饭）'},
     wudaoying: {label:'国子监 → 五道营',modes:['步行推荐'],route:'国子监街 → 雍和宫大街或附近开放街巷 → 五道营胡同',note:'按博物馆实际出口选择步行路线，约 10–20 分钟。胡同内慢慢逛，适合把咖啡和休息安排在这里。',estimate:'步行约 10–20 分钟'},
-    nanluo: {label:'抵达南锣鼓巷',modes:['地铁 6 / 8 号线','步行'],route:'南锣鼓巷站 → 按“南锣鼓巷”导向出站 → 南锣鼓巷南口',note:'从南口向北逛，接着去鼓楼。假期出口可能调整，按现场指引过街即可；不要把鼓楼大街站当作南锣鼓巷的抵达站。',estimate:'出站后步行约 5–10 分钟'},
+    nanluo: {label:'抵达南锣鼓巷',modes:['地铁 6 / 8 号线','步行'],route:'南锣鼓巷站 E 口 → 按“南锣鼓巷”导向出站 → 南锣鼓巷南口',note:'从南口向北逛，接着去鼓楼。假期出口可能调整，按现场指引过街即可；不要把鼓楼大街站当作南锣鼓巷的抵达站。',estimate:'出站后步行约 5–10 分钟'},
     gulou: {label:'南锣鼓巷 → 鼓楼',modes:['步行推荐'],route:'南锣鼓巷北口 → 鼓楼东大街向西 → 鼓楼',note:'从南锣北口出发步行约 15–25 分钟，途中可午饭。不要返回南锣南口坐地铁，会增加折返与进站时间。',estimate:'步行约 15–25 分钟（从北口起算）'},
     shichahai: {label:'鼓楼 → 什刹海',modes:['步行推荐'],route:'鼓楼 → 烟袋斜街 → 银锭桥 → 前海、后海湖边',note:'直接步行约 10–20 分钟；逛烟袋斜街、喝茶和拥挤排队另留时间。这一段不需要乘车。',estimate:'步行约 10–20 分钟（不含逛街、茶歇）'},
-    beihai: {label:'抵达北海公园',modes:['地铁 6 号线','步行'],route:'北海北站 → 按北海公园方向出站 → 北海公园北门',note:'按北门进、东门出的游览安排走，方便下一站景山。车站出口按现场开放情况选择。',estimate:'出站后步行约 5–10 分钟'},
+    beihai: {label:'抵达北海公园',modes:['地铁 6 号线','步行'],route:'北海北站 D 口 → 沿地安门西大街南侧向东 → 北海公园北门',note:'按北门进、东门出的游览安排走，方便下一站景山。车站出口按现场开放情况选择。',estimate:'出站后步行约 5–10 分钟'},
     jingshan: {label:'北海 → 景山',modes:['步行推荐'],route:'北海公园东门 → 陟山门街一带 → 景山公园西门',note:'两园相邻，约 10–15 分钟步行即可衔接，不需要公交或地铁。注意从北海东门离园；若误走北门，会增加路程。',estimate:'步行约 10–15 分钟'}
   },
-  tiantanOnly: {label:'从住处前往天坛',modes:['地铁 5 号线','步行'],route:'就近接入 5 号线 → 天坛东门站 → 天坛公园东门',note:'地坛已移到 10/4，今天不用先去雍和宫。出站后按天坛东门导向步行约 5–10 分钟；乘车方向取决于住处所在站。',estimate:'出站后步行约 5–10 分钟'},
+  tiantanOnly: {label:'从住处前往天坛',modes:['地铁 5 号线','步行'],route:'就近接入 5 号线 → 天坛东门站 A2 口 → 天坛公园东门',note:'地坛已移到 10/4，今天不用先去雍和宫。出站后按天坛东门导向步行约 5–10 分钟；乘车方向取决于住处所在站。',estimate:'出站后步行约 5–10 分钟'},
   ditanAfterWudaoying: {label:'五道营 → 地坛',modes:['步行推荐'],route:'五道营胡同 → 雍和宫桥附近过街通道 → 地坛南门',note:'需经正规过街通道穿过北二环一带，不按地图直线横穿道路。若从胡同西端离开，也可经安定门方向到地坛西门；选择当时较近的入口。',estimate:'步行约 20–30 分钟'},
   departures: {
     1: {label:'圆明园游览后',modes:['地铁 4 号线'],route:'从南门离园 → 圆明园站 → 按住宿方向乘车',note:'若从东门离园，回圆明园站并非几分钟可达，先查“圆明园东门 → 住宿”的实时公交，不必特意折回南门。',estimate:'南门至地铁约 5–10 分钟'},
@@ -32,3 +32,19 @@ window.TRIP.transit = {
     {title:'111 路最新调整',url:'https://www.beijing.gov.cn/fuwu/bmfw/sy/jrts/202609/t20260922_4875360.html'}
   ]
 };
+
+// Exit advice is explicit in the daily cards; special holiday control takes precedence.
+Object.assign(window.TRIP.transit.incoming.yuanmingyuan,{exit:'圆明园站 B 口（东北口），适合圆明园南门。'});
+Object.assign(window.TRIP.transit.incoming.tsinghua,{exit:'西门入校：圆明园站 B 口（东北口）；东南门入校：五道口站 A 口（北口），沿成府路向西接中关村东路向北。校门以预约为准。'});
+Object.assign(window.TRIP.transit.incoming.yonghe,{exit:'雍和宫站 F 口（东南口），出站沿雍和宫大街向南到游客入口。'});
+Object.assign(window.TRIP.transit.incoming.ditan,{exit:'若单独乘地铁来地坛，雍和宫站 A 口（西北口）更适合地坛南门。本次 10/4 从五道营步行前往，无需坐地铁。'});
+for(const leg of [window.TRIP.transit.incoming.tiantan,window.TRIP.transit.tiantanOnly]) leg.exit='天坛东门站 A2 口（西北口），与公园东门同在天坛东路西侧。';
+Object.assign(window.TRIP.transit.incoming.nanluo,{exit:'南锣鼓巷站 E 口（西北口），临近胡同南口。若 E 口临时只进不出，按现场指引走开放出口，不逆行。'});
+Object.assign(window.TRIP.transit.incoming.beihai,{exit:'北海北站 D 口（西南口），沿道路南侧向东步行至北门，通常可少一次过街。'});
+window.TRIP.transit.sources.push(
+ {title:'北海北出口参考 · 北京旅游网',url:'https://www.visitbeijing.com.cn/article/4QGOY6eZsnE'},
+ {title:'圆明园站出口 · 京港地铁',url:'https://www.mtr.bj.cn/service/line/station/5d5a18eeb1ea0278b8fffd60.html'},
+ {title:'南锣鼓巷站出口',url:'https://zh.wikipedia.org/wiki/南锣鼓巷站'},
+ {title:'雍和宫站出口',url:'https://zh.wikipedia.org/wiki/雍和宫站'},
+ {title:'天坛东门站出口',url:'https://zh.wikipedia.org/wiki/天坛东门站'}
+);
